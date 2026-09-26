@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopio - Online Shopping</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+
+    <style>
+
+        /* =========================
+           BASIC SETTINGS
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7f6;
+            color: #222;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            width: 100%;
+            background-color: #14213d;
+            padding: 18px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            color: #fca311;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fca311;
+        }
+
+        .cart-icon {
+            color: white;
+            font-size: 20px;
+        }
+
+        .cart-icon:hover {
+            color: #fca311;
+        }
+
+
+        /* =========================
+           HERO SECTION
+        ========================= */
+
+        .hero {
+            width: 90%;
+            min-height: 380px;
+            margin: 30px auto;
+
+            background:
+                linear-gradient(
+                    rgba(20, 33, 61, 0.70),
+                    rgba(20, 33, 61, 0.70)
+                ),
+                url("image1.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            border-radius: 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            padding: 40px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: #fca311;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #fca311;
+            color: #14213d;
+
+            padding: 13px 25px;
+            border-radius: 6px;
+
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+            width: 90%;
+            margin: 50px auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature {
+            background-color: white;
+            padding: 35px 25px;
+
+            text-align: center;
+
+            border-radius: 12px;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-7px);
+        }
+
+        .feature i {
+            font-size: 35px;
+            color: #fca311;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 10px;
+            color: #14213d;
+        }
+
+        .feature p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .products-section {
+            width: 90%;
+            margin: 70px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 35px;
+            color: #14213d;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+
+            transition: 0.3s;
+        }
+
+        .product:hover {
+            transform: translateY(-7px);
+        }
+
+        .product img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            color: #14213d;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: #fca311;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .add-cart {
+            width: 100%;
+            border: none;
+
+            background-color: #14213d;
+            color: white;
+
+            padding: 12px;
+            border-radius: 5px;
+
+            cursor: pointer;
+            font-size: 15px;
+
+            transition: 0.3s;
+        }
+
+        .add-cart:hover {
+            background-color: #fca311;
+            color: #14213d;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-section {
+            width: 90%;
+            margin: 70px auto;
+
+            background-color: #e5e5e5;
+            border-radius: 15px;
+
+            padding: 50px;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h2 {
+            color: #14213d;
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin: 18px 0;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .contact-info i {
+            color: #fca311;
+            width: 25px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            border: none;
+            outline: none;
+
+            padding: 15px;
+
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        .contact-form textarea {
+            height: 130px;
+            resize: none;
+        }
+
+        .contact-form button {
+            border: none;
+            background-color: #14213d;
+            color: white;
+
+            padding: 14px;
+
+            border-radius: 6px;
+            cursor: pointer;
+
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #fca311;
+            color: #14213d;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background-color: #14213d;
+            color: white;
+
+            padding: 50px 7%;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+            gap: 40px;
+        }
+
+        .footer-box h2 {
+            color: #fca311;
+            margin-bottom: 15px;
+        }
+
+        .footer-box h3 {
+            margin-bottom: 15px;
+        }
+
+        .footer-box p {
+            color: #ddd;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin: 10px 0;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #fca311;
+            padding-left: 5px;
+        }
+
+        .social {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .social a {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            background-color: white;
+            color: #14213d;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            background-color: #fca311;
+            transform: translateY(-4px);
+        }
+
+        .newsletter {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter input {
+            width: 70%;
+            padding: 12px;
+
+            border: none;
+            outline: none;
+        }
+
+        .newsletter button {
+            width: 30%;
+
+            border: none;
+            background-color: #fca311;
+            color: #14213d;
+
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .copyright {
+            text-align: center;
+
+            border-top: 1px solid rgba(255,255,255,0.2);
+
+            margin-top: 40px;
+            padding-top: 20px;
+
+            color: #ddd;
+        }
+                 
+    </style>
+</head>
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav>
+
+        <div class="logo">
+            Shopio
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Products</a></li>
+            <li><a href="#products">Contact</a></li>
+        </ul>
+
+        <a href="#products" class="cart-icon">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Find Best Products
+                <span>For You</span>
+            </h1>
+
+            <p>
+                Discover quality products at amazing prices.
+                Shop your favorite products and upgrade
+                your lifestyle today.
+            </p>
+
+            <a href="#products" class="btn">
+                Explore Now
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FEATURES
+    ========================== -->
+
+    <section class="features">
+
+        <div class="feature">
+
+            <i class="fa-solid fa-star"></i>
+
+            <h3>
+                High Quality
+            </h3>
+
+            <p>
+                We provide high quality products
+                for our customers.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <i class="fa-solid fa-truck"></i>
+
+            <h3>
+                Fast Delivery
+            </h3>
+
+            <p>
+                Get your favorite products
+                delivered quickly.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <i class="fa-solid fa-headset"></i>
+
+            <h3>
+                24/7 Support
+            </h3>
+
+            <p>
+                Our customer support is
+                available whenever you need it.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUCTS
+    ========================== -->
+
+    <section class="products-section" id="products">
+
+        <div class="section-title">
+
+            <h2>
+                Our Products
+            </h2>
+
+            <p>
+                Check out our latest products
+            </p>
+
+        </div>
+
+
+        <div class="products">
+
+
+            <!-- Product 1 -->
+
+            <div class="product">
+
+                <img src="image2.jpg" alt="Smart Watch">
+
+                <div class="product-info">
+
+                    <h3>
+                        Smart Watch
+                    </h3>
+
+                    <div class="price">
+                        $49.99
+                    </div>
+
+                    <button class="add-cart">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 2 -->
+
+            <div class="product">
+
+                <img src="image3.jpg" alt="Wireless Earbuds">
+
+                <div class="product-info">
+
+                    <h3>
+                        Wireless Earbuds
+                    </h3>
+
+                    <div class="price">
+                        $29.99
+                    </div>
+
+                    <button class="add-cart">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 3 -->
+
+            <div class="product">
+
+                <img src="image4.jpg" alt="Stylish Glasses">
+
+                <div class="product-info">
+
+                    <h3>
+                        Stylish Glasses
+                    </h3>
+
+                    <div class="price">
+                        $19.99
+                    </div>
+
+                    <button class="add-cart">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product 4 -->
+
+            <div class="product">
+
+                <img src="image5.jpg" alt="Travel Backpack">
+
+                <div class="product-info">
+
+                    <h3>
+                        Travel Backpack
+                    </h3>
+
+                    <div class="price">
+                        $39.99
+                    </div>
+
+                    <button class="add-cart">
+                        <i class="fa-solid fa-cart-plus"></i>
+                        Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section class="contact-section" id="contact">
+
+        <div class="contact-container">
+
+
+            <div class="contact-info">
+
+                <h2>
+                    Contact Us
+                </h2>
+
+                <p>
+                    <i class="fa-solid fa-location-dot"></i>
+                    Karachi, Pakistan
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-envelope"></i>
+                    sm90490294@gmail.com
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-phone"></i>
+                    +92 312 2066840
+                </p>
+
+            </div>
+
+
+            <form class="contact-form">
+
+                <input
+                    type="text"
+                    placeholder="Your Name"
+                    required
+                >
+
+                <input
+                    type="email"
+                    placeholder="Your Email"
+                    required
+                >
+
+                <textarea
+                    placeholder="Your Message"
+                    required
+                ></textarea>
+
+                <button type="submit">
+                    Send Message
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-box">
+                <h2>
+                    Shopio
+                </h2>
+                <p>
+                    Your trusted online shopping
+                    destination for quality products
+                    at amazing prices.
+                </p>
+                <div class="social">
+                        <i class="fa-brands fa-facebook-f"></i>
+                        <i class="fa-brands fa-instagram"></i>
+                        <i class="fa-brands fa-twitter"></i>
+                        <i class="fa-brands fa-youtube"></i>
+                </div>
+            </div>
+           <div class="footer-box">
+                <h3>
+                    Quick Links
+                </h3>
+                <ul class="footer-links">
+                    <li>Home</li>
+                    <li>Products</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h3>
+                    Customer Service
+                </h3>
+
+                <ul class="footer-links">
+
+                    <li>Help Center</li>
+                    <li> Shipping</li>
+                    <li> Returns </li>
+                    <li>  Privacy Policy</li>
+                </ul>
+            </div>
+            <div class="footer-box">
+
+                <h3>Newsletter</h3>
+                <p>Subscribe to get updates about our latest products.</p>
+             <div class="newsletter">
+
+                    <input type="email" placeholder="Your Email">
+                          <button>Subscribe</button>
+             </div>
+            </div>
+        </div>
+             <div class="copyright">
+
+            <p>
+                © 2026 Shopio. All Rights Reserved.
+            </p>
+                          
+        </div>
+    </footer>
+
+</body>
+</html>
